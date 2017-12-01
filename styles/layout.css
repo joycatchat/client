@@ -1,0 +1,108 @@
+header {
+  /*border: solid 1px;*/
+  width: 600px;
+  margin: auto;
+  padding: 2em;
+}
+
+h1 {
+  display: inline-block;
+  float: left;
+  font-size: 2em;
+}
+
+.main-nav ul {
+  display: inline-block;
+  float: right;
+}
+
+.main-nav li {
+  display: inline-block;
+}
+
+main {
+  width: 600px;
+  margin: auto;
+}
+
+.container {
+  /*border: solid 1px;*/
+  padding: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin: 0 0 0.8em 0;
+  text-align: center;
+}
+
+input, button {
+  font-size: 1.1em;
+  margin: 0.2em;
+  padding: 0.6em 1em;
+  font-weight: 100;
+  outline: none;
+  border: 0.5px solid #999;
+  border-radius: 2px;
+}
+
+input::placeholder {
+  color: #bbb;
+}
+
+input[type=text], input[type=password] {
+  width: 90%;
+  margin: 0.5em 0 1em 0;
+}
+
+input[type=submit]:active, button:active {
+  color: #fff;
+  background: #333;
+}
+
+input[type=submit]:hover, button:hover {
+  background: #eee;
+}
+
+#avatar {
+  border: solid 1px;
+  border-radius: 2px;
+  margin: 0 0.5em 0.5em 0;
+  float: left;
+}
+
+#chatwindow {
+  border: solid 1px;
+  border-radius: 2px;
+  padding: 0.5em 1em;
+  font-size: 0.9em;
+  font-family: Inconsolata, monospace;
+  height: 400px;
+  overflow: auto;
+}
+
+.chat-username {
+  font-weight: 900;
+}
+
+.chat-username:hover {
+  cursor: default;
+}
+
+#chat-input {
+  float: left;
+  width: 85%;
+  margin: 0.5em 0;
+  padding: 5px 10px;
+  font-family: Inconsolata, monospace;
+  font-size: 0.9em;
+}
+
+#chat-submit {
+  float: right;
+  width: 14%;
+  margin: 0.5em 0;
+  padding: 5px 13px;
+  font-family: Inconsolata, monospace;
+  font-size: 0.9em;
+}
