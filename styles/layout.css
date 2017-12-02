@@ -38,7 +38,7 @@ h2 {
 
 input, button {
   font-size: 1.1em;
-  margin: 0.2em;
+  margin: 0.2em 0.2em 1em 0.2em;
   padding: 0.6em 1em;
   font-weight: 100;
   outline: none;

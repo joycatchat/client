@@ -34,6 +34,10 @@ a {
   font-weight: 900;
 }
 
+p {
+  font-size: 0.9em;
+}
+
 .clearfix::after {
   content: "";
   display: table;
