@@ -7,14 +7,23 @@ const __API_URL__ = 'http://localhost:3000';
 (function (module){
   const login = {};
 
-  // Login Event Handler
+  // Login Event Handler & Loads Profile
   $('#loginform').on('submit', function(e) {
     e.preventDefault();
     login.username = $('#username').val().toLowerCase();
     login.password = $('#password').val();
 
     $.get(`${__API_URL__}/login`, {'username': login.username, 'password': login.password})
-      .then(data => console.log(data))
+      .then(data => {
+        console.log('logged in');
+        let usernameWithCase = data.username.slice(0, 1).toUpperCase() + data.username.slice(1);
+        $('#validationmsg').text(`Welcome, ${usernameWithCase}!`);
+
+        $('#profile-username').text(data.username);
+        $('#profile-name').text(data.name);
+        $('#profile-birthdate').text(data.birthdate);
+        $('#profile-description').text(data.description);
+      })
       .catch(err => console.error(err));
   });
 
@@ -27,6 +36,7 @@ const __API_URL__ = 'http://localhost:3000';
       .then(data => {
         if (data === 'registered') {
           $('#validationmsg').text('Your account has been registered!');
+          $('#profile-username').text(login.username);
         }
         else if (data === 'userexists') $('#validationmsg').text('That username already exists. Please try again.');
       })

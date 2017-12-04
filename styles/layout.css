@@ -36,7 +36,7 @@ h2 {
   text-align: center;
 }
 
-input, button {
+input, button, textarea {
   font-size: 1.1em;
   margin: 0.2em 0.2em 1em 0.2em;
   padding: 0.6em 1em;
@@ -46,11 +46,11 @@ input, button {
   border-radius: 2px;
 }
 
-input::placeholder {
+input::placeholder, textarea:placeholder {
   color: #bbb;
 }
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], textarea {
   width: 90%;
   margin: 0.5em 0 1em 0;
 }

@@ -34,12 +34,11 @@
 
             <input type="password" id="password" name="password" placeholder="password" required />
 
-            </select>
-              <input type="submit" id="loginbutton" name="loginbutton" value="login" />
-              <input type="button" id="registerbutton" name="registerbutton" value="register" />
+            <input type="submit" id="loginbutton" name="loginbutton" value="login" />
+            <input type="button" id="registerbutton" name="registerbutton" value="register" />
 
-              <p id="validationmsg">Please log in to see the chat!</p>
           </form>
+          <p id="validationmsg">Please log in to see the chat!</p>
         </div> <!-- login container -->
 
         <div id="profile" class="container clearfix">
@@ -54,6 +53,22 @@
             <li>[ <a href="#" id="editprofile">Edit Profile</a> ]</li>
           </ul>
         </div> <!-- profile container -->
+
+        <div id="updateprofile" class="container clearfix">
+          <form id="profileform" class="center">
+            <h2>Update Profile</h2>
+
+            <input type="text" id="updateprofile-name" name="name" placeholder="your first name" />
+
+            <input type="text" id="updateprofile-birthdate" name="birthdate" placeholder="your birthdate" />
+
+            <textarea rows="3" id="updateprofile-description" name="description" placeholder="a little about you..."></textarea>
+
+            <input type="button" id="cancelupdateprofile" name="cancel" value="cancel" />
+            <input type="submit" id="updateprofilebutton" name="updateprofilebutton" value="update" />
+
+          </form>
+        </div> <!-- update profile container -->
 
         <div id="chat" class="container clearfix">
           <h2>Chat</h2>
@@ -77,5 +92,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
     <script src="scripts/login.js" type="text/javascript"></script>
+    <script src="scripts/profile.js" type="text/javascript"></script>
   </body>
 </html>
