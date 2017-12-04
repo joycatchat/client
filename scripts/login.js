@@ -1,8 +1,8 @@
 'use strict';
 
 var app = app || {};
-// const __API_URL__ = 'https://joycatchat.herokuapp.com';
-const __API_URL__ = 'http://localhost:3000';
+const __API_URL__ = 'https://joycatchat.herokuapp.com';
+// const __API_URL__ = 'http://localhost:3000';
 
 (function (module){
   const login = {};
@@ -11,11 +11,21 @@ const __API_URL__ = 'http://localhost:3000';
   $('#loginform').on('submit', function(e) {
     e.preventDefault();
     login.username = $('#username').val().toLowerCase();
-    login.password = $('#password').val().toLowerCase();
+    login.password = $('#password').val();
 
     $.get(`${__API_URL__}/login`, {'username': login.username, 'password': login.password})
-      .then(data => {console.log(data)})
+      .then(data => console.log(data))
       .catch(err => console.error(err));
+  });
+
+  // Register Event Handler
+  $('#registerbutton').on('click', function() {
+    login.username = $('#username').val().toLowerCase();
+    login.password = $('#password').val();
+
+    $.post(`${__API_URL__}/register`, {'username': login.username, 'password': login.password})
+      .then(data => console.log(data))
+      .catch(err => console.error(login.password, err));
   });
 
   module.login = login;
