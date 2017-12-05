@@ -50,25 +50,55 @@ input::placeholder, textarea:placeholder {
   color: #bbb;
 }
 
+input[type=radio] {
+  visibility: hidden;
+}
+
+label img {
+  border: 1px solid #000;
+}
+
+input[type="radio"]:checked+label img {
+  /*visibility: visible;*/
+  border: 3px solid #666;
+}
+
 input[type=text], input[type=password], textarea {
   width: 90%;
   margin: 0.5em 0 1em 0;
 }
 
-input[type=submit]:active, button:active {
+input[type=submit]:active, input[type=button]:active, button:active {
   color: #fff;
   background: #333;
 }
 
-input[type=submit]:hover, button:hover {
+input[type=submit]:hover, input[type=button]:hover, button:hover {
   background: #eee;
 }
 
-#avatar {
+#profile, #updateprofile, #chat {
+  display: none;
+}
+
+#profile-avatar {
   border: solid 1px;
   border-radius: 2px;
   margin: 0 0.5em 0.5em 0;
   float: left;
+}
+
+#avatarbuttons {
+  margin-bottom: 1em;
+}
+
+#hideavatars {
+  display: none;
+}
+
+#avatar-div {
+  display: none;
+  margin-bottom: 1em;
 }
 
 #chatwindow {

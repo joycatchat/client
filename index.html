@@ -38,12 +38,13 @@
             <input type="button" id="registerbutton" name="registerbutton" value="register" />
 
           </form>
-          <p id="validationmsg">Please log in to see the chat!</p>
         </div> <!-- login container -->
+
+        <p id="validationmsg" class="center">Please log in to see the chat!</p>
 
         <div id="profile" class="container clearfix">
           <h2>Profile</h2>
-          <img id="avatar" src="http://via.placeholder.com/150x150" />
+          <img id="profile-avatar" src="http://via.placeholder.com/150x150" />
           <ul>
             <li>Username: <span id="profile-username"></span></li>
             <li>Name: <span id="profile-name"></span></li>
@@ -58,11 +59,24 @@
           <form id="profileform" class="center">
             <h2>Update Profile</h2>
 
+            <img id="updateprofile-currentavatar" src="http://via.placeholder.com/150x150" /><br />
+            <div id="avatarbuttons">
+              <input type="button" id="selectavatar" value="select avatar" />
+              <input type="button" id="hideavatars" value="hide avatars" />
+            </div>
+            <div id="avatar-div"></div>
+
+            <label for="name">your first name</label>
             <input type="text" id="updateprofile-name" name="name" placeholder="your first name" />
+            <br />
 
+            <label for="birthdate">your birthdate</label>
             <input type="text" id="updateprofile-birthdate" name="birthdate" placeholder="your birthdate" />
+            <br />
 
+            <label for="description">describe yourself</label>
             <textarea rows="3" id="updateprofile-description" name="description" placeholder="a little about you..."></textarea>
+            <br />
 
             <input type="button" id="cancelupdateprofile" name="cancel" value="cancel" />
             <input type="submit" id="updateprofilebutton" name="updateprofilebutton" value="update" />
