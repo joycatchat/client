@@ -2,17 +2,8 @@ var app = app || {};
 
 (function (module){
   const profile = {};
-  profile.avatars = [
-    '0.png',
-    '1.png',
-    '2.png',
-    '3.png',
-    '4.png',
-    '5.png',
-    '6.png',
-    '7.png',
-    '8.png'
-  ];
+  profile.avatars = [];
+  profile.avatarsFolder = 'images/avatars/';
 
   // Load Profile
   profile.loadProfile = () => { //eslint-disable-line
@@ -66,16 +57,25 @@ var app = app || {};
       $('#hideavatars').hide();
     });
 
-    for (let i in profile.avatars) {
-      $('#avatar-div').append(`<input type="radio" name="updateprofile-avatar" value="${i}.png" id="radio-avatar${i}"/><label for="${i}.png"><img id="avatar${i}" src="images/avatars/${i}.png" /></label>`);
+    $.ajax({
+      url: profile.avatarsFolder
+    })
+      .then(data => {
+        $(data).find('a').attr('href', function(i, val) {
+          if (val.match(/\.(jpe?g|png|gif)$/)) profile.avatars.push(val);
+        });
 
-      let prepend = 'images/avatars/';
-      $(`#avatar${i}`).on('click', function() {
-        $('#avatar-div input[type="radio"]').attr('checked', false);
-        $(`#radio-avatar${i}`).attr('checked', 'checked');
-        profile.avatar = prepend + $('#avatar-div [name="updateprofile-avatar"]:checked').val();
-      });
-    }
+        for (let i in profile.avatars) {
+          $('#avatar-div').append(`<input type="radio" name="updateprofile-avatar" value="${profile.avatars[i]}" id="radio-avatar${i}"/><label for="${profile.avatars[i]}"><img id="avatar${i}" src="${profile.avatars[i]}" /></label>`);
+
+          $(`#avatar${i}`).on('click', function() {
+            $('#avatar-div input[type="radio"]').attr('checked', false);
+            $(`#radio-avatar${i}`).attr('checked', 'checked');
+            profile.avatar = $('#avatar-div [name="updateprofile-avatar"]:checked').val();
+          });
+        }
+      })
+      .catch(err => console.error(err));
   }
   selectAvatar();
 
