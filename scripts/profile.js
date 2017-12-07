@@ -37,7 +37,6 @@ var app = app || {};
     $('#hideavatars').hide();
 
     $('#updateprofile-currentavatar').attr('src', profile.avatar);
-    window.location.href = '#updateprofile';
     $('#updateprofile-name').attr('placeholder', profile.name);
     $('#updateprofile-birthdate').attr('placeholder', profile.birthdate);
     $('#updateprofile-description').attr('placeholder', profile.description);
@@ -107,8 +106,29 @@ var app = app || {};
   // Cancel Editing Profile
   $('#cancelupdateprofile').on('click', function() {
     console.log('cancelled editing profile');
-    window.location.href = '#profile';
   });
+
+  // Show Other Profiles
+  profile.showOtherProfiles = (user) => {
+    console.log(user);
+    $.get(`${__API_URL__}/showotherprofile`, {'username': user}) // eslint-disable-line
+      .then(data => {
+        console.log('other profile loaded', data);
+
+        // profile.username = data.username;
+        // profile.avatar = data.avatar;
+        // profile.name = data.name;
+        // profile.birthdate = data.birthdate;
+        // profile.description = data.description;
+        //
+        // $('#profile-username').text(data.username);
+        // $('#profile-avatar').attr('src', data.avatar);
+        // $('#profile-name').text(data.name);
+        // $('#profile-birthdate').text(data.birthdate);
+        // $('#profile-description').text(data.description);
+      })
+      .catch(err => console.error(err));
+  }
 
   module.profile = profile;
 })(app);

@@ -13,16 +13,23 @@ const __API_URL__ = 'http://localhost:3000';
     $('.container').hide();
     if (login.loggedIn) {
       $('#chat').show();
+      app.chat.load();
+      $('.chat-username').off('click');
+      $('.chat-username').on('click', (e) => {
+        console.log('hello');
+      });
       $('#refresh').off('click');
       $('#refresh').on('click', () => window.location.reload());
     } else {
       $('#login').show();
+      clearInterval(app.chat.chatInterval);
       $('#validationmsg').text('Please log in to view the chat or your profile!');
     }
   }
 
   login.initProfilePage = () => {
     $('.container').hide();
+    clearInterval(app.chat.chatInterval);
     if (login.loggedIn) {
       $('#profile').show();
     } else {
