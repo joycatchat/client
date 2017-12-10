@@ -53,8 +53,8 @@
             <li>Name: <span id="profile-name"></span></li>
             <li>Birthdate: <span id="profile-birthdate"></span></li>
             <li>Description: <span id="profile-description"></span></li>
-            <li><button id="editprofile">Edit Profile</button></li>
           </ul>
+          <div class="clearboth center"><button id="editprofile">Edit Profile</button></div>
         </div> <!-- profile container -->
 
         <div id="updateprofile" class="container clearfix">
@@ -86,6 +86,12 @@
           </form>
         </div> <!-- update profile container -->
 
+        <div id="messages" class="container clearfix">
+          <h2>Your Messages</h2>
+          <div id="yourmessages"><div class="center">You do not have any messages.</div></div>
+          <div class="center"><input type="button" id="sendnewmessage" value="Send New Message" /></div>
+        </div> <!-- messages -->
+
         <div id="chat" class="container clearfix">
           <h2>Chat</h2>
           <div id="chatwindow">
@@ -101,21 +107,36 @@
       </main>
     </div> <!-- wrapper -->
 
-    <div class="modal">
+    <div id="modal">
       <div id="modal-profile" class="modal-content center">
-        <span class="close-modal">&times;</span>
+        <span class="close-modal" id="close-profile">&times;</span>
         <h2><span id="modal-username"></span>'s Profile</h2>
         <img id="modal-avatar" src="http://via.placeholder.com/150x150" />
         <ul>
           <li>Name: <span id="modal-name"></span></li>
           <li>Birthdate: <span id="modal-birthdate"></span></li>
           <li>Description: <span id="modal-description"></span></li>
-          <li><button id="modal-privatemessage">Private Message</button></li>
+        </ul>
+        <span id="modal-message-button"></span>
       </div> <!-- modal-profile -->
 
       <div id="modal-messages" class="modal-content">
-        <span class="close-modal">&times;</span>
-        <h2>Private Message <span id="modal-messageTo"></span></h2>
+        <span class="close-modal" id="close-messages">&times;</span>
+        <h2>Private Message</h2>
+
+        <form id="messageform" method="post" class="center">
+
+          <label for="messageto">Send To</label><br />
+          <input type="text" id="messageto" name="messageto" placeholder="To:" required /><br />
+
+          <label for="messagetext">Message Body</label><br />
+          <textarea rows="3" id="messagetext" name="messagetext" placeholder="message body..." required></textarea>
+          <br />
+
+          <input type="submit" id="sendmessagebutton" value="Send Message" />
+        </form>
+        <p id="msgformvalidation"></p>
+
       </div> <!-- modal-messages -->
     </div> <!-- modal -->
 
@@ -124,6 +145,7 @@
     <script src="scripts/login.js" type="text/javascript"></script>
     <script src="scripts/profile.js" type="text/javascript"></script>
     <script src="scripts/chat.js" type="text/javascript"></script>
+    <script src="scripts/messages.js" type="text/javascript"></script>
     <script src="scripts/routes.js" type="text/javascript"></script>
     <!-- <script src="scripts/socket.io.js"></script>
     <script>

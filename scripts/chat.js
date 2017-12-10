@@ -37,7 +37,9 @@ var app = app || {};
           data = JSON.parse(JSON.parse(data[0].messages));
           chat.all = data;
           data.forEach(el => $('#chatwindow').append(el));
-          window.scrollTo(0,document.body.scrollHeight);
+          let scrollTo = document.getElementById('chatwindow');
+          scrollTo.scrollTop = scrollTo.scrollHeight;
+
         }
       })
       .catch(err => console.error(err));

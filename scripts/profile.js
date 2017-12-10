@@ -32,14 +32,15 @@ var app = app || {};
     console.log('editing profile');
     $('#profile').hide();
     $('#updateprofile').show();
+    $('#messages').hide();
     $('#avatar-div').hide();
     $('#selectavatar').show();
     $('#hideavatars').hide();
 
     $('#updateprofile-currentavatar').attr('src', profile.avatar);
-    $('#updateprofile-name').attr('placeholder', profile.name);
-    $('#updateprofile-birthdate').attr('placeholder', profile.birthdate);
-    $('#updateprofile-description').attr('placeholder', profile.description);
+    $('#updateprofile-name').val(profile.name);
+    $('#updateprofile-birthdate').val(profile.birthdate);
+    $('#updateprofile-description').val(profile.description);
 
   });
 
@@ -84,6 +85,7 @@ var app = app || {};
 
     $('#updateprofile').hide();
     $('#profile').show();
+    $('#messages').show();
 
     profile.name = $('#updateprofile-name').val().replace(`\'`, `''`); //eslint-disable-line
     profile.birthdate = $('#updateprofile-birthdate').val().replace(`\'`, `''`); //eslint-disable-line
@@ -115,14 +117,20 @@ var app = app || {};
         console.log('other profile loaded', data.username);
 
         $('#modal').show();
+        $('#modal-profile').show();
+        $('#modal-messages').hide();
         $('#modal-username').text(data.username);
         if (data.avatar) $('#modal-avatar').attr('src', data.avatar);
         $('#modal-name').text(data.name);
         $('#modal-birthdate').text(data.birthdate);
         $('#modal-description').text(data.description);
 
-        $('#close-modal').off('click');
-        $('#close-modal').on('click', () => $('#modal').hide())
+        profile.messageTo = data.username;
+        $('#modal-message-button').empty();
+        $('#modal-message-button').html(`<button id="modal-privatemessage" onclick="app.messages.sendPM(${'app.profile.messageTo'})">Private Message</button>`);
+
+        $('#close-profile').off('click');
+        $('#close-profile').on('click', () => $('#modal').hide())
       })
       .catch(err => console.error(err));
   }

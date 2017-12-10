@@ -2,6 +2,7 @@
 @import url("reset.css");
 @import url("icons.css");
 @import url("layout.css");
+@import url("modules.css");
 
 * {
   box-sizing: border-box;
@@ -46,4 +47,8 @@ p {
 
 .center {
   text-align: center;
+}
+
+.clearboth {
+  clear: both;
 }

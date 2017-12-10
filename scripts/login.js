@@ -32,6 +32,8 @@ const __API_URL__ = 'http://localhost:3000';
     clearInterval(app.chat.chatInterval);
     if (login.loggedIn) {
       $('#profile').show();
+      $('#messages').show();
+      app.messages.loadMessages();
     } else {
       $('#login').show();
       $('#validationmsg').text('You need to be logged in to access your profile.');
