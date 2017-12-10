@@ -115,18 +115,16 @@ var app = app || {};
       .then(data => {
         console.log('other profile loaded', data);
 
-        // profile.username = data.username;
-        // profile.avatar = data.avatar;
-        // profile.name = data.name;
-        // profile.birthdate = data.birthdate;
-        // profile.description = data.description;
-        //
-        // $('#profile-username').text(data.username);
-        // $('#profile-avatar').attr('src', data.avatar);
-        // $('#profile-name').text(data.name);
-        // $('#profile-birthdate').text(data.birthdate);
-        // $('#profile-description').text(data.description);
+        $('#modal').show();
+        $('#modal-username').text(data.username);
+        if (data.avatar) $('#modal-avatar').attr('src', data.avatar);
+        $('#modal-name').text(data.name);
+        $('#modal-birthdate').text(data.birthdate);
+        $('#modal-description').text(data.description);
       })
+
+    $('#close-modal').off('click');
+    $('#close-modal').on('click', () => $('#modal').hide())
       .catch(err => console.error(err));
   }
 
