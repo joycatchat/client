@@ -7,7 +7,8 @@ var app = app || {};
   $('#chatform').on('submit', (e) => {
     e.preventDefault();
     if (chat.all.length >= 50) chat.all.shift();
-    let message = `<span class="chat-username" title="${new Date(Date.now())}" onclick="app.profile.showOtherProfiles(${'app.login.username'})">${app.login.username}</span>: <span class="chat-text">${$('#chat-input').val()}</span><br />`;
+
+    let message = `<span class="chat-username" title="${new Date(Date.now())}" onclick="app.profile.showOtherProfiles($(this).text())">${app.login.username}</span>: <span class="chat-text">${$('#chat-input').val()}</span><br />`;
     chat.all.push(message);
     chat.update();
   });
@@ -36,6 +37,7 @@ var app = app || {};
           data = JSON.parse(JSON.parse(data[0].messages));
           chat.all = data;
           data.forEach(el => $('#chatwindow').append(el));
+          window.scrollTo(0,document.body.scrollHeight);
         }
       })
       .catch(err => console.error(err));

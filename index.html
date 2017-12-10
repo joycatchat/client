@@ -101,9 +101,9 @@
       </main>
     </div> <!-- wrapper -->
 
-    <div id="modal">
-      <div id="modal-content" class="center">
-        <span id="close-modal">&times;</span>
+    <div class="modal">
+      <div id="modal-profile" class="modal-content center">
+        <span class="close-modal">&times;</span>
         <h2><span id="modal-username"></span>'s Profile</h2>
         <img id="modal-avatar" src="http://via.placeholder.com/150x150" />
         <ul>
@@ -111,7 +111,12 @@
           <li>Birthdate: <span id="modal-birthdate"></span></li>
           <li>Description: <span id="modal-description"></span></li>
           <li><button id="modal-privatemessage">Private Message</button></li>
-      </div> <!-- modal-content -->
+      </div> <!-- modal-profile -->
+
+      <div id="modal-messages" class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Private Message <span id="modal-messageTo"></span></h2>
+      </div> <!-- modal-messages -->
     </div> <!-- modal -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

@@ -138,7 +138,7 @@ input[type=submit]:hover, input[type=button]:hover, button:hover {
 }
 
 
-#modal {
+.modal {
   position: fixed;
   overflow: hidden;
   left: 0;
@@ -150,7 +150,7 @@ input[type=submit]:hover, input[type=button]:hover, button:hover {
   display: none;
 }
 
-#modal-content {
+.modal-content {
   background: #fff;
   margin: 10% auto;
   padding: 2em;
@@ -158,14 +158,18 @@ input[type=submit]:hover, input[type=button]:hover, button:hover {
   border: solid 1px;
 }
 
-#close-modal {
+.close-modal {
     color: #aaa;
     float: right;
     font-size: 3em;
     font-weight: 900;
 }
 
-#close-modal:hover, #close-modal:focus {
+.close-modal:hover, .close-modal:focus {
     color: #000;
     cursor: pointer;
+}
+
+#modal-messages {
+  display: none;
 }

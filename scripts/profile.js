@@ -110,10 +110,9 @@ var app = app || {};
 
   // Show Other Profiles
   profile.showOtherProfiles = (user) => {
-    console.log(user);
     $.get(`${__API_URL__}/showotherprofile`, {'username': user}) // eslint-disable-line
       .then(data => {
-        console.log('other profile loaded', data);
+        console.log('other profile loaded', data.username);
 
         $('#modal').show();
         $('#modal-username').text(data.username);
@@ -121,10 +120,10 @@ var app = app || {};
         $('#modal-name').text(data.name);
         $('#modal-birthdate').text(data.birthdate);
         $('#modal-description').text(data.description);
-      })
 
-    $('#close-modal').off('click');
-    $('#close-modal').on('click', () => $('#modal').hide())
+        $('#close-modal').off('click');
+        $('#close-modal').on('click', () => $('#modal').hide())
+      })
       .catch(err => console.error(err));
   }
 
