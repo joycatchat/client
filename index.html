@@ -87,8 +87,28 @@
         </div> <!-- update profile container -->
 
         <div id="messages" class="container clearfix">
-          <h2>Your Messages</h2>
-          <div id="yourmessages"><div class="center">You do not have any messages.</div></div>
+
+          <h2>Received Messages</h2>
+          <table class="messagestable">
+            <tr id="receivedmessagestableheader">
+              <th class="msgtablefrom">From</th>
+              <th class="msgtableto">To</th>
+              <th class="msgtabletitle">Title</th>
+              <th class="msgtablesent">Sent</th>
+            </tr>
+            <tr id="yourreceivedmessages"><td colspan="4">You have not received any messages.</td></tr>
+          </table>
+
+          <h2>Sent Messages</h2>
+          <table class="messagestable">
+            <tr id="sentmessagestableheader">
+              <th class="msgtablefrom">From</th>
+              <th class="msgtableto">To</th>
+              <th class="msgtabletitle">Title</th>
+              <th class="msgtablesent">Sent</th>
+            </tr>
+            <tr id="yoursentmessages"><td colspan="4">You do not have any sent messages.</td></tr>
+          </table>
           <div class="center"><input type="button" id="sendnewmessage" value="Send New Message" /></div>
         </div> <!-- messages -->
 
@@ -122,12 +142,15 @@
 
       <div id="modal-messages" class="modal-content">
         <span class="close-modal" id="close-messages">&times;</span>
-        <h2>Private Message</h2>
+        <h2>Private* Message</h2>
 
         <form id="messageform" method="post" class="center">
 
           <label for="messageto">Send To</label><br />
           <input type="text" id="messageto" name="messageto" placeholder="To:" required /><br />
+
+          <label for="messagetitle">Message Title</label><br />
+          <input type="text" id="messagetitle" name="messagetitle" placeholder="Title" maxlength="50" required /><br />
 
           <label for="messagetext">Message Body</label><br />
           <textarea rows="3" id="messagetext" name="messagetext" placeholder="message body..." required></textarea>
@@ -136,6 +159,7 @@
           <input type="submit" id="sendmessagebutton" value="Send Message" />
         </form>
         <p id="msgformvalidation"></p>
+        <p id="pmdisclaimer">*not private</p>
 
       </div> <!-- modal-messages -->
     </div> <!-- modal -->

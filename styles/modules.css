@@ -41,7 +41,7 @@
 }
 
 .chat-username:hover {
-  cursor: default;
+  cursor: pointer;
 }
 
 #chat-input {
@@ -96,6 +96,60 @@
     cursor: pointer;
 }
 
+/* ============== MESSAGES ============== */
+
+#pmdisclaimer {
+  font-size: 0.7em;
+}
+
 #modal-messages {
   display: none;
+}
+
+.messagestable {
+  width: 100%;
+  margin: 1em 1em 2em 1em;
+}
+
+.messagestable th {
+  border: solid 1px;
+  padding: 10px;
+}
+
+.messagestable td {
+  font-size: 0.9em;
+  padding: 4px;
+  text-align: center;
+  border: solid 1px;
+}
+
+.sentmessagestablemessages:hover, .receivedmessagestablemessages:hover {
+  background: #eee;
+  cursor: pointer;
+}
+
+.msgtablefrom, .msgtableto {
+  width: 15%;
+}
+
+.msgtabletitle {
+  width: 40%;
+}
+
+.msgtabledate {
+  width: 30%;
+}
+
+#sendnewmessage {
+  margin: 1em;
+}
+
+[id*="receivedmsg"], [id*="sentmsg"] {
+  display: none;
+  background: #fcfcfc;
+}
+
+[id*="receivedmsg"]:hover, [id*="sentmsg"]:hover {
+  background: #fcfcfc;
+  cursor: default;
 }

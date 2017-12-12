@@ -107,6 +107,7 @@ var app = app || {};
 
   // Cancel Editing Profile
   $('#cancelupdateprofile').on('click', function() {
+    app.login.initProfilePage();
     console.log('cancelled editing profile');
   });
 
@@ -127,7 +128,7 @@ var app = app || {};
 
         profile.messageTo = data.username;
         $('#modal-message-button').empty();
-        $('#modal-message-button').html(`<button id="modal-privatemessage" onclick="app.messages.sendPM(${'app.profile.messageTo'})">Private Message</button>`);
+        $('#modal-message-button').html(`<button id="modal-privatemessage" onclick="app.messages.sendPM(${'app.profile.messageTo'})">Send Message</button>`);
 
         $('#close-profile').off('click');
         $('#close-profile').on('click', () => $('#modal').hide())
