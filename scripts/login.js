@@ -40,6 +40,11 @@ const __API_URL__ = 'https://joycatchat.herokuapp.com';
     }
   }
 
+  $('#homeicon').off('click');
+  $('#homeicon').on('click', () => login.initIndexPage());
+  $('#profileicon').off('click');
+  $('#profileicon').on('click', () => login.initProfilePage());
+
   // Login Event Handler
   $('#loginbutton').on('click', function() {
     login.username = $('#username').val().toLowerCase();

@@ -22,6 +22,7 @@
 	font-size: 36px;
 	letter-spacing: 0.2em;
 	text-decoration: none;
+	cursor: pointer;
 
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
