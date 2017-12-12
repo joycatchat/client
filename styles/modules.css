@@ -28,7 +28,9 @@
 
 #chatwindow {
   border: solid 1px;
-  border-radius: 2px;
+  border-radius: 20px;
+  background: #000;
+  color: #fff;
   padding: 0.5em 1em;
   font-size: 0.9em;
   font-family: Inconsolata, monospace;
@@ -77,9 +79,9 @@
 
 .modal-content {
   background: #fff;
-  margin: 10% auto;
+  margin: 50px auto;
   padding: 2em;
-  width: 50%;
+  width: 600px;
   min-width: 350px;
   border: solid 1px;
 }
@@ -114,6 +116,7 @@
 .messagestable th {
   border: solid 1px;
   padding: 10px;
+  background: #ffd161;
 }
 
 .messagestable td {
@@ -124,7 +127,7 @@
 }
 
 .sentmessagestablemessages:hover, .receivedmessagestablemessages:hover {
-  background: #eee;
+  background: #ffe9b5;
   cursor: pointer;
 }
 
@@ -146,10 +149,10 @@
 
 [id*="receivedmsg"], [id*="sentmsg"] {
   display: none;
-  background: #fcfcfc;
+  background: #fff9ea;
 }
 
 [id*="receivedmsg"]:hover, [id*="sentmsg"]:hover {
-  background: #fcfcfc;
+  background: #fff9ea;
   cursor: default;
 }

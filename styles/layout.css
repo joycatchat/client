@@ -9,11 +9,12 @@ h1 {
   display: inline-block;
   float: left;
   font-size: 2em;
+  text-align: center;
 }
 
-.main-nav ul {
+.main-nav {
   display: inline-block;
-  float: right;
+  /*float: left;*/
 }
 
 .main-nav li {
@@ -68,11 +69,14 @@ input[type=text], input[type=password], textarea {
   margin: 0.5em 0 1em 0;
 }
 
+input[type=submit], input[type=button], button {
+  background: #ffd161;
+}
+
 input[type=submit]:active, input[type=button]:active, button:active {
-  color: #fff;
-  background: #333;
+  background: #ffd161;
 }
 
 input[type=submit]:hover, input[type=button]:hover, button:hover {
-  background: #eee;
+  background: #ffb607;
 }
