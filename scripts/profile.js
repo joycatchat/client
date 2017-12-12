@@ -131,7 +131,7 @@ var app = app || {};
         $('#modal-profile').show();
         $('#modal-messages').hide();
         $('#modal-username').text(data.username);
-        if (data.avatar) $('#modal-avatar').attr('src', data.avatar);
+        if (data.avatar) $('#modal-avatar').attr('src', profile.avatarsFolder + data.avatar);
         $('#modal-name').text(data.name);
         $('#modal-birthdate').text(data.birthdate);
         $('#modal-description').text(data.description);
