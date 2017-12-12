@@ -3,7 +3,7 @@ var app = app || {};
 (function (module){
   const profile = {};
   profile.avatars = [];
-  profile.avatarsFolder = 'images/avatars/';
+  profile.avatarsFolder = 'https://joycatchat.github.io/client/images/avatars/';
 
   // Load Profile
   profile.loadProfile = () => { //eslint-disable-line
