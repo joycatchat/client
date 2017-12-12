@@ -18,7 +18,7 @@ var app = app || {};
         profile.description = data.description;
 
         $('#profile-username').text(data.username);
-        if (profile.avatar) $('#profile-avatar').attr('src', data.avatar);
+        if (profile.avatar) $('#profile-avatar').attr('src', profile.avatarsFolder + data.avatar);
         $('#profile-name').text(data.name);
         $('#profile-birthdate').text(data.birthdate);
         $('#profile-description').text(data.description);
