@@ -40,10 +40,12 @@
 
 .chat-username {
   font-weight: 900;
+  color: #eee;
 }
 
 .chat-username:hover {
   cursor: pointer;
+  color: #fff;
 }
 
 #chat-input {
