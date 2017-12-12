@@ -2,17 +2,8 @@ var app = app || {};
 
 (function (module){
   const profile = {};
-  profile.avatars = [
-    '0.png',
-    '1.png',
-    '2.png',
-    '3.png',
-    '4.png',
-    '5.png',
-    '6.png',
-    '7.png',
-    '8.png'
-  ];
+  profile.avatars = [];
+  profile.avatarsFolder = 'images/avatars/';
 
   // Load Profile
   profile.loadProfile = () => { //eslint-disable-line
@@ -41,15 +32,15 @@ var app = app || {};
     console.log('editing profile');
     $('#profile').hide();
     $('#updateprofile').show();
+    $('#messages').hide();
     $('#avatar-div').hide();
     $('#selectavatar').show();
     $('#hideavatars').hide();
 
     $('#updateprofile-currentavatar').attr('src', profile.avatar);
-    window.location.href = '#updateprofile';
-    $('#updateprofile-name').attr('placeholder', profile.name);
-    $('#updateprofile-birthdate').attr('placeholder', profile.birthdate);
-    $('#updateprofile-description').attr('placeholder', profile.description);
+    $('#updateprofile-name').val(profile.name);
+    $('#updateprofile-birthdate').val(profile.birthdate);
+    $('#updateprofile-description').val(profile.description);
 
   });
 
@@ -66,16 +57,25 @@ var app = app || {};
       $('#hideavatars').hide();
     });
 
-    for (let i in profile.avatars) {
-      $('#avatar-div').append(`<input type="radio" name="updateprofile-avatar" value="${i}.png" id="radio-avatar${i}"/><label for="${i}.png"><img id="avatar${i}" src="images/avatars/${i}.png" /></label>`);
+    $.ajax({
+      url: profile.avatarsFolder
+    })
+      .then(data => {
+        $(data).find('a').attr('href', function(i, val) {
+          if (val.match(/\.(jpe?g|png|gif)$/)) profile.avatars.push(val);
+        });
 
-      let prepend = 'images/avatars/';
-      $(`#avatar${i}`).on('click', function() {
-        $('#avatar-div input[type="radio"]').attr('checked', false);
-        $(`#radio-avatar${i}`).attr('checked', 'checked');
-        profile.avatar = prepend + $('#avatar-div [name="updateprofile-avatar"]:checked').val();
-      });
-    }
+        for (let i in profile.avatars) {
+          $('#avatar-div').append(`<input type="radio" name="updateprofile-avatar" value="${profile.avatars[i]}" id="radio-avatar${i}"/><label for="${profile.avatars[i]}"><img id="avatar${i}" src="${profile.avatars[i]}" /></label>`);
+
+          $(`#avatar${i}`).on('click', function() {
+            $('#avatar-div input[type="radio"]').attr('checked', false);
+            $(`#radio-avatar${i}`).attr('checked', 'checked');
+            profile.avatar = $('#avatar-div [name="updateprofile-avatar"]:checked').val();
+          });
+        }
+      })
+      .catch(err => console.error(err));
   }
   selectAvatar();
 
@@ -85,6 +85,7 @@ var app = app || {};
 
     $('#updateprofile').hide();
     $('#profile').show();
+    $('#messages').show();
 
     profile.name = $('#updateprofile-name').val().replace(`\'`, `''`); //eslint-disable-line
     profile.birthdate = $('#updateprofile-birthdate').val().replace(`\'`, `''`); //eslint-disable-line
@@ -106,9 +107,34 @@ var app = app || {};
 
   // Cancel Editing Profile
   $('#cancelupdateprofile').on('click', function() {
+    app.login.initProfilePage();
     console.log('cancelled editing profile');
-    window.location.href = '#profile';
   });
+
+  // Show Other Profiles
+  profile.showOtherProfiles = (user) => {
+    $.get(`${__API_URL__}/showotherprofile`, {'username': user}) // eslint-disable-line
+      .then(data => {
+        console.log('other profile loaded', data.username);
+
+        $('#modal').show();
+        $('#modal-profile').show();
+        $('#modal-messages').hide();
+        $('#modal-username').text(data.username);
+        if (data.avatar) $('#modal-avatar').attr('src', data.avatar);
+        $('#modal-name').text(data.name);
+        $('#modal-birthdate').text(data.birthdate);
+        $('#modal-description').text(data.description);
+
+        profile.messageTo = data.username;
+        $('#modal-message-button').empty();
+        $('#modal-message-button').html(`<button id="modal-privatemessage" onclick="app.messages.sendPM(${'app.profile.messageTo'})">Send Message</button>`);
+
+        $('#close-profile').off('click');
+        $('#close-profile').on('click', () => $('#modal').hide())
+      })
+      .catch(err => console.error(err));
+  }
 
   module.profile = profile;
 })(app);

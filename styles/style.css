@@ -2,6 +2,7 @@
 @import url("reset.css");
 @import url("icons.css");
 @import url("layout.css");
+@import url("modules.css");
 
 * {
   box-sizing: border-box;
@@ -13,13 +14,13 @@
 body {
   width: 100%;
   height: 100%;
-  background: #fff;
+  background: #ffefc8;
   color: #000;
   font-size: 16px;
   font-family: Raleway, sans-serif;
   line-height: 1.5em;
   word-spacing: 0.1em;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.09em;
 }
 
 #wrapper {
@@ -28,10 +29,14 @@ body {
 }
 
 a {
-  color: #888;
+  color: #666;
   text-decoration: none;
   cursor: hand;
   font-weight: 900;
+}
+
+a:hover {
+  color: #000;
 }
 
 p {
@@ -46,4 +51,8 @@ p {
 
 .center {
   text-align: center;
+}
+
+.clearboth {
+  clear: both;
 }
