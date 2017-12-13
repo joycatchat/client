@@ -84,7 +84,7 @@ const __API_URL__ = 'https://joycatchat.herokuapp.com';
           console.log('user registered: ', data);
           login.loggedIn = true;
           app.profile.loadProfile();
-          $('#validationmsg').text('Welcome! Your account has been registered. [ <a href="#" id="refresh">Log Out</a> ]');
+          $('#validationmsg').html('Welcome! Your account has been registered. [ <a href="#" id="refresh">Log Out</a> ]');
           login.initIndexPage();
         }
         else if (data === 'userexists') $('#validationmsg').text('That username already exists. Please try again.');

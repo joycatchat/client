@@ -66,6 +66,11 @@
   font-size: 0.9em;
 }
 
+#instructions {
+  font-size: 0.8em;
+  margin: 2em 0;
+}
+
 /* ============== MODAL ============== */
 #modal {
   position: fixed;
